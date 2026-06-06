@@ -4,12 +4,11 @@ function index(req, res) {
     res.json(array)
 }
 
-function list(req, res) {
-    res.send(`Lista prodotti`)
-}
 
-function listID(req, res) {
-    res.send(` Visualizza Prodotti per id ${req.params.id}`)
+function Show(req, res) {
+    const id = parseInt(req.params.id)
+    const singleOBJ = array.find((obj) => obj.id === id)
+    res.json(singleOBJ)
 }
 
 function Create(req, res) {
@@ -28,4 +27,4 @@ function Delete(req, res) {
     res.send(` Cancella Prodotti per id ${req.params.id}`)
 }
 
-module.exports = { index, list, listID, Create, Update, Modify, Delete }
+module.exports = { index, Show, Create, Update, Modify, Delete }
