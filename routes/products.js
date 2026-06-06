@@ -5,11 +5,7 @@ const controller = require(`../controllers/controller`)
 
 router.get(`/`, controller.index)
 
-
-router.get(`/`, controller.list)
-
-
-router.get(`/:id`, controller.listID)
+router.get(`/:id`, controller.Show)
 
 router.post(`/`, controller.Create)
 
