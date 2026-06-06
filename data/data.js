@@ -30,3 +30,5 @@ const array = [
         tags: ["torta","dolce","paesano","fatto in casa"]
     },
 ]
+
+module.exports = array

@@ -1,5 +1,7 @@
+const array = require(`../data/data`)
+
 function index(req, res) {
-    res.send(`Index`)
+    res.json(array)
 }
 
 function list(req, res) {
