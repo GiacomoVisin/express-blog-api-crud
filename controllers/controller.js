@@ -8,6 +8,16 @@ function index(req, res) {
 function Show(req, res) {
     const id = parseInt(req.params.id)
     const singleOBJ = array.find((obj) => obj.id === id)
+
+    if (!singleOBJ) {
+
+        res.status(404)
+
+        return res.json({
+            error: "Not Found",
+            message: "Object doesn't exist"
+        })
+    }
     res.json(singleOBJ)
 }
 
