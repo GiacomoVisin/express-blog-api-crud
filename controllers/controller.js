@@ -34,7 +34,23 @@ function Modify(req, res) {
 }
 
 function Delete(req, res) {
-    res.send(` Cancella Prodotti per id ${req.params.id}`)
+    const id = parseInt(req.params.id)
+    const product = array.find((product) => product.id === id)
+
+    if (!product) {
+        res.status(404)
+        return res.json({
+            error: "Not Found",
+            message: "Object doesn't exist"
+        })
+    }
+
+    array.splice(array.indexOf(product), 1)
+
+
+    console.log(array);
+
+    res.sendStatus(204)
 }
 
 module.exports = { index, Show, Create, Update, Modify, Delete }
