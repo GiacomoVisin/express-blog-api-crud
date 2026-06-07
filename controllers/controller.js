@@ -1,8 +1,18 @@
 const array = require(`../data/data`)
 
 function index(req, res) {
-    res.json(array)
+
+    let filteredArray = array
+    if (req.query.tag) {
+        filteredArray = array.filter((obj) => obj.tag.includes(req.query.tag))
+    }
+    res.json(filteredArray)
+
+
 }
+
+
+
 
 
 function Show(req, res) {
