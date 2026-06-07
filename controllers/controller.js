@@ -3,12 +3,18 @@ const array = require(`../data/data`)
 function index(req, res) {
 
     let filteredArray = array
-    if (req.query.tag) {
-        filteredArray = array.filter((obj) => obj.tag.includes(req.query.tag))
+
+    if (!req.query.tag) {
+        return res.json(filteredArray)
     }
-    res.json(filteredArray)
+
+    filteredArray = array.filter((obj) => obj.tag.includes(req.query.tag))
 
 
+    if (filteredArray.length === 0){
+        return res.json(array)
+    }
+    return res.json(filteredArray)
 }
 
 
