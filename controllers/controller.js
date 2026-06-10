@@ -11,7 +11,7 @@ function index(req, res) {
     filteredArray = array.filter((obj) => obj.tag.includes(req.query.tag))
 
 
-    if (filteredArray.length === 0){
+    if (filteredArray.length === 0) {
         return res.json(array)
     }
     return res.json(filteredArray)
@@ -39,25 +39,42 @@ function Show(req, res) {
 
 function Store(req, res) {
 
-const NewID = array[array.length - 1].id + 1
+    const NewID = array[array.length - 1].id + 1
 
-const newProduct = {
-    id: NewID,
-    titolo: req.body.titolo,
-    contenuto: req.body.contenuto,
-    immagine: req.body.immagine,
-    tag: [req.body.tag]
-}
+    const newProduct = {
+        id: NewID,
+        titolo: req.body.titolo,
+        contenuto: req.body.contenuto,
+        immagine: req.body.immagine,
+        tag: [req.body.tag]
+    }
 
-array.push(newProduct)
-console.log(array);
-console.log(newProduct);
+    array.push(newProduct)
+    console.log(array);
+    console.log(newProduct);
 
 
 }
 
 function Update(req, res) {
-    res.send(` Aggiorna Prodotti per id ${req.params.id}`)
+    const ID = parseInt(req.params.id)
+    const product = array.find((obj) => obj.id === ID)
+
+    if (!product) {
+        return res.status(404)
+        res.json({
+            error: "Not Found",
+            message: "Product not found"
+        })
+    }
+        product.id = ID,
+        product.titolo = req.body.titolo,
+        product.contenuto = req.body.contenuto,
+        product.immagine = req.body.immagine,
+        product.tag = [req.body.tag]
+
+        console.log(product);
+        
 }
 
 function Modify(req, res) {
