@@ -38,7 +38,22 @@ function Show(req, res) {
 }
 
 function Store(req, res) {
-    res.send(` Crea Prodotti `)
+
+const NewID = array[array.length - 1].id + 1
+
+const newProduct = {
+    id: NewID,
+    titolo: req.body.titolo,
+    contenuto: req.body.contenuto,
+    immagine: req.body.immagine,
+    tag: [req.body.tag]
+}
+
+array.push(newProduct)
+console.log(array);
+console.log(newProduct);
+
+
 }
 
 function Update(req, res) {
