@@ -50,8 +50,17 @@ function Store(req, res) {
     }
 
     array.push(newProduct)
+
+  res.json({
+    status: "200",
+    product: newProduct
+  })
+
+
     console.log(array);
-    console.log(newProduct);
+    
+
+   
 
 
 }
@@ -61,20 +70,24 @@ function Update(req, res) {
     const product = array.find((obj) => obj.id === ID)
 
     if (!product) {
-        return res.status(404)
-        res.json({
+        res.status(404)
+        return res.json({
             error: "Not Found",
             message: "Product not found"
         })
     }
-        product.id = ID,
-        product.titolo = req.body.titolo,
-        product.contenuto = req.body.contenuto,
-        product.immagine = req.body.immagine,
-        product.tag = [req.body.tag]
 
-        console.log(product);
-        
+    product.id = ID,
+    product.titolo = req.body.titolo,
+    product.contenuto = req.body.contenuto,
+    product.immagine = req.body.immagine,
+    product.tag = [req.body.tag]
+
+    console.log(product);
+    res.json({
+        status: 200,
+        post: product
+    })
 }
 
 function Modify(req, res) {
