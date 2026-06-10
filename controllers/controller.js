@@ -37,7 +37,7 @@ function Show(req, res) {
     res.json(singleOBJ)
 }
 
-function Create(req, res) {
+function Store(req, res) {
     res.send(` Crea Prodotti `)
 }
 
@@ -69,4 +69,4 @@ function Delete(req, res) {
     res.sendStatus(204)
 }
 
-module.exports = { index, Show, Create, Update, Modify, Delete }
+module.exports = { index, Show, Store, Update, Modify, Delete }

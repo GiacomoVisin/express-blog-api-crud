@@ -7,7 +7,7 @@ router.get(`/`, controller.index)
 
 router.get(`/:id`, controller.Show)
 
-router.post(`/`, controller.Create)
+router.post(`/`, controller.Store)
 
 router.put(`/:id`, controller.Update)
 
